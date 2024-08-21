@@ -99,16 +99,17 @@ public class PlayerMovement : MonoBehaviour
 	{
 		
 		//checks direction of movement
-		if (RB.velocity.x < 0)
+		if(RB.velocity.x > 0.1)
+        {
+			isMovingRight = true;
+
+        }		
+		else if (RB.velocity.x < -0.1)
         {
 			isMovingRight = false;
 			
         }
-		else if(RB.velocity.x > 0)
-        {
-			isMovingRight = true;
 
-        }
 
 
 		#region TIMERS
