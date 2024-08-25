@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 	SpriteRenderer Sprite;
 	bool isMovingRight = true;
 	public AudioSource DeathSound;
+	public ParticleSystem dust;
 	#region Variables
 	//Components
 	public Rigidbody2D RB { get; private set; }
@@ -391,6 +392,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		//stores scale and flips the player along the x axis, 
 		Sprite.flipX = !Sprite.flipX;
+		dust.Play();
 	}
     #endregion
 

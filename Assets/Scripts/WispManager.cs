@@ -11,6 +11,7 @@ public class WispManager : MonoBehaviour
     public int requiredWisps;
     public int wispCount;
     public GameObject door;
+    public AudioSource power;
 
 
     // Start is called before the first frame update
@@ -31,6 +32,10 @@ public class WispManager : MonoBehaviour
         }
     }
 
+    void Power()
+    {
+        power.Play();
+    }
     //public virtual void OnTriggerEnter2D(Collision2D other)
     //{
     //    if (other.gameObject.CompareTag("Player"))

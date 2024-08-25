@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bef111db247a75b4f9a9e075485997f9
+guid: 011a5340b179f9149b1b26b79ae9f3f2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +103,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,76 +129,56 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WispReduced_0
+      name: VinesTileMap_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 48
         y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7335443ba581ce64099dca5e28e27d57
-      internalID: 2013984363
+      spriteID: 33cf66810878ec549ba6de4b5adceaa0
+      internalID: 41853903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_1
+      name: VinesTileMap_4
       rect:
         serializedVersion: 2
-        x: 16
+        x: 64
         y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f4139ff6ed67174b9bf8556d0941e11
-      internalID: 1946470631
+      spriteID: 6f9e0897bfeb11e45a3beca7a7771a54
+      internalID: 129626606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24951ca0a6b26ed47b29fdec631ef492
-      internalID: 186027437
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WispReduced_3
+      name: VinesTileMap_5
       rect:
         serializedVersion: 2
         x: 0
@@ -176,20 +186,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 835256e0f3339c14b937430af94955e2
-      internalID: -826975809
+      spriteID: a3a1bec64fc43014188a9be06b1db878
+      internalID: -189928267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_4
+      name: VinesTileMap_6
       rect:
         serializedVersion: 2
         x: 16
@@ -197,20 +207,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 429be907a76eda948be30d3ce83d68f9
-      internalID: -674077672
+      spriteID: 99a494941144157478a63302dc463a5c
+      internalID: -913774166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_5
+      name: VinesTileMap_7
       rect:
         serializedVersion: 2
         x: 32
@@ -218,20 +228,62 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa37b3ebd06867f4792925611e68dea5
-      internalID: 292044652
+      spriteID: 0b97d480f58965e4a9f7b709389c853f
+      internalID: 1860875430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_6
+      name: VinesTileMap_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458e7c6f4de391c458acbd9dec15f91a
+      internalID: 794259103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VinesTileMap_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a88aa6a14e03e5c42bf1c521a0e25715
+      internalID: 1749705318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VinesTileMap_10
       rect:
         serializedVersion: 2
         x: 0
@@ -239,20 +291,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cd7f1a26501c924d935a1acc700db39
-      internalID: -37762010
+      spriteID: 68e1d630b3babdc4f9febc1b558a969e
+      internalID: 1065896131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_7
+      name: VinesTileMap_11
       rect:
         serializedVersion: 2
         x: 16
@@ -260,20 +312,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba5a9fe829de32f4bbc36f83fe2c48fe
-      internalID: -778123819
+      spriteID: 10383cfc43783744fbdb571c33e2ba8d
+      internalID: -431048287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_8
+      name: VinesTileMap_12
       rect:
         serializedVersion: 2
         x: 32
@@ -281,20 +333,41 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54b2ef1da63b2bb4aaad286edb7fb00c
-      internalID: -1243890500
+      spriteID: 18e588b3d843ce746b1b20f164cb7c67
+      internalID: -1339394824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_9
+      name: VinesTileMap_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d6b71134143e240b6894eb7f7b07b7
+      internalID: 1670708637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VinesTileMap_15
       rect:
         serializedVersion: 2
         x: 0
@@ -302,20 +375,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b27a7de1191f1d4ebee102121f58c38
-      internalID: 1166960046
+      spriteID: 69c4fb16489ce6e4480d2ba59bb68080
+      internalID: -1429589145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_10
+      name: VinesTileMap_16
       rect:
         serializedVersion: 2
         x: 16
@@ -323,20 +396,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494bc9ddd87d32a499a68db546eb1e0f
-      internalID: -242634216
+      spriteID: adf334a7a263bc044ac1f4321240debf
+      internalID: -1194591891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WispReduced_11
+      name: VinesTileMap_17
       rect:
         serializedVersion: 2
         x: 32
@@ -344,14 +417,35 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 111b5da9a0949e14e809bb9f29f4065d
-      internalID: 1511786291
+      spriteID: a3d00a5e5f1fb244b9535f1d72618e3b
+      internalID: 286962023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VinesTileMap_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac8fffad02fd11a40979ab1669ccbb05
+      internalID: 960527092
       vertices: []
       indices: 
       edges: []
@@ -367,21 +461,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WispReduced_11: 1511786291
-      WispReduced_2: 186027437
-      WispReduced_9: 1166960046
-      WispReduced_7: -778123819
-      WispReduced_0: 2013984363
-      WispReduced_5: 292044652
-      WispReduced_3: -826975809
-      WispReduced_4: -674077672
-      WispReduced_10: -242634216
-      WispReduced_1: 1946470631
-      WispReduced_6: -37762010
-      WispReduced_8: -1243890500
-  spritePackingTag: 
+      VinesTileMap_0: -303526559
+      VinesTileMap_1: 1796128919
+      VinesTileMap_10: 1065896131
+      VinesTileMap_11: -431048287
+      VinesTileMap_12: -1339394824
+      VinesTileMap_13: 685669958
+      VinesTileMap_14: 1670708637
+      VinesTileMap_15: -1429589145
+      VinesTileMap_16: -1194591891
+      VinesTileMap_17: 286962023
+      VinesTileMap_18: 4564930
+      VinesTileMap_19: 960527092
+      VinesTileMap_2: -1223138882
+      VinesTileMap_3: 41853903
+      VinesTileMap_4: 129626606
+      VinesTileMap_5: -189928267
+      VinesTileMap_6: -913774166
+      VinesTileMap_7: 1860875430
+      VinesTileMap_8: 794259103
+      VinesTileMap_9: 1749705318
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
