@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: LibraryBackground
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 0}
+  m_DefaultSprite: {fileID: -1305652115, guid: ee34ec3a378fe9d48ba12a802bdcb236, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 0
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: -1305652115, guid: b528cb8dc5ff0c3449fec0b8db145b06, type: 3}
+    - {fileID: -1305652115, guid: ee34ec3a378fe9d48ba12a802bdcb236, type: 3}
     - {fileID: -847537414, guid: e070e17ead22e8743af969743afd5fdc, type: 3}
     - {fileID: 891865884, guid: e070e17ead22e8743af969743afd5fdc, type: 3}
     - {fileID: -1531828597, guid: e070e17ead22e8743af969743afd5fdc, type: 3}

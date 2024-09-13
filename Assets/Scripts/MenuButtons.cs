@@ -18,7 +18,7 @@ public class MenuButtons : MonoBehaviour
 
     public void _RestartGame()
     {
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("Level_0");
     }
     public void _BackToMenu()
     {

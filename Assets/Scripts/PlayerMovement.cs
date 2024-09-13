@@ -161,7 +161,11 @@ public class PlayerMovement : MonoBehaviour
 			{
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
 				animator.SetBool("IsJumping", false);
-            }		
+			}
+			else
+			{
+				animator.SetBool("IsJumping", true);
+			}
 
 			//Right Wall Check
 			if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
