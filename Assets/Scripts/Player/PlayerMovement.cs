@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		//Pose
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !PoseBackground.activeSelf)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !PoseBackground.activeSelf && !animator.GetBool("Dead"))
         {
             this.gameObject.GetComponent<Animator>().enabled = false;
             Invoke("StrikeAPose", 0.1f);
