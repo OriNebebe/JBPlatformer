@@ -23,7 +23,7 @@ public class RedTurretLogic : MonoBehaviour
     {
         ProjectileBehaviour fire = Instantiate(ProjPrefab, LaunchOffset.position, transform.rotation).GetComponent<ProjectileBehaviour>();
         fire.SetDir(AimDir);
-        Debug.Log("fire dir " + fire.direction);
+        //Debug.Log("fire dir " + fire.direction);
         Audi.Play();
 
     }

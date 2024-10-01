@@ -16,6 +16,7 @@ public class MovingObjects : MonoBehaviour
     int pointIndex;
     int pointCount;
     int direction = 1;
+    public LayerMask _groundMask;
 
     int speedMultiplier = 1;
 
@@ -71,4 +72,15 @@ public class MovingObjects : MonoBehaviour
         speedMultiplier = 1;
     }
 
+    #region Platformy
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    collision.transform.SetParent(transform);
+    //}
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    collision.transform.SetParent(null);
+    //}
+    #endregion
 }

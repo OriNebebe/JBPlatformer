@@ -20,6 +20,6 @@ public class cameraController : MonoBehaviour
     {
         float x = Mathf.Clamp(transform.position.x, leftMin, rightMin);
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 }

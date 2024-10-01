@@ -7750,6 +7750,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4276719618823949155, guid: a58f618b84aaa234e9e81a93c3cd6d74, type: 3}
   m_PrefabInstance: {fileID: 616094203}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &619608000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6221054193897548247, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+  m_PrefabInstance: {fileID: 1477387123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &619608002 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+  m_PrefabInstance: {fileID: 1477387123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &619608003 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 272605481696300510, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+  m_PrefabInstance: {fileID: 1477387123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &678011054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10837,6 +10852,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1477387123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1720169707}
+    m_Modifications:
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092111566277182661, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221054193897548247, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
+      propertyPath: m_Name
+      value: PoseBack
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: befad6281b5c4884b8b935e7131d2080, type: 3}
 --- !u!1001 &1513405129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12717,6 +12789,7 @@ Transform:
   - {fileID: 175793706}
   - {fileID: 519420032}
   - {fileID: 1036191817}
+  - {fileID: 619608002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1720169709
@@ -12780,11 +12853,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 1313534a8c35d0a469d1570c1a8ee640, type: 2}
-  DeathSound: {fileID: 0}
   dust: {fileID: 1036191815}
-  deathScreen: {fileID: 0}
-  UI: {fileID: 0}
   wispManager: {fileID: 0}
+  UI: {fileID: 0}
+  deathScreen: {fileID: 0}
+  DeathSound: {fileID: 0}
+  Pose: {fileID: 619608003}
+  poses:
+  - {fileID: 1517288158, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  - {fileID: 2062581678, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  - {fileID: 1003127394, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  - {fileID: -558397305, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  - {fileID: 95540251, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  - {fileID: -213293335, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  - {fileID: 629434928, guid: 12f5f05280f62da4d88534276a48f7f6, type: 3}
+  PoseBackground: {fileID: 619608000}
   _groundCheckPoint: {fileID: 366711316}
   _groundCheckSize: {x: 0.5, y: 0.03}
   _frontWallCheckPoint: {fileID: 2144705648}
@@ -12793,6 +12876,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _iceLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!70 &1720169713
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

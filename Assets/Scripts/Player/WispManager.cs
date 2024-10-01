@@ -13,8 +13,6 @@ public class WispManager : MonoBehaviour
     public GameObject door;
     public AudioSource power;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         col = GetComponent<BoxCollider2D>();
@@ -22,7 +20,6 @@ public class WispManager : MonoBehaviour
         col.enabled = false;
     }
  
-    // Update is called once per frame
     void Update()
     {
         if(wispCount >= requiredWisps)
@@ -36,13 +33,7 @@ public class WispManager : MonoBehaviour
     {
         power.Play();
     }
-    //public virtual void OnTriggerEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    }
-    //}
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))

@@ -2393,6 +2393,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      T_TilemapV2_0: 1426394540
       TilemapV2_0: -1031544306
       TilemapV2_1: -2107178185
       TilemapV2_10: 68175009

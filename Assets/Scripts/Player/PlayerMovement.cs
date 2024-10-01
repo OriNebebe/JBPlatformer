@@ -5,32 +5,40 @@
 	!*!&@==================================================@&!*!
  */
 
+using JetBrains.Annotations;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-	//Scriptable object
-	public PlayerData Data;
+    //Scriptable object
+    public PlayerData Data;
 	Animator animator;
 	SpriteRenderer Sprite;
 	bool isMovingRight = true;
-	public AudioSource DeathSound;
-	public ParticleSystem dust;
+    public ParticleSystem dust;
 	#region Variables
 	//Components
 	public Rigidbody2D RB { get; private set; }
-	public GameObject deathScreen;
+	public WispManager wispManager;
     public GameObject UI;
+	public GameObject deathScreen;
+	public AudioSource DeathSound;
+    public AudioSource Pose;
+	public Sprite[] poses;
+	public GameObject PoseBackground;
 
     public bool IsFacingRight { get; private set; }
 	public bool IsJumping { get; private set; }
 	public bool IsWallJumping { get; private set; }
 	public bool IsSliding { get; private set; }
 
-	//Timers (also all fields, could be private and a method returning a bool could be used)
-	public float LastOnGroundTime { get; private set; }
+    //Timers (also all fields, could be private and a method returning a bool could be used)
+    public float LastOnGroundTime { get; private set; }
 	public float LastOnWallTime { get; private set; }
 	public float LastOnWallRightTime { get; private set; }
 	public float LastOnWallLeftTime { get; private set; }
@@ -46,21 +54,19 @@ public class PlayerMovement : MonoBehaviour
 	private Vector2 _moveInput;
 	public float LastPressedJumpTime { get; private set; }
 
-	public WispManager wispManager;
-
-	//Set all of these up in the inspector
-	[Header("Checks")] 
+    //Set all of these up in the inspector
+    [Header("Checks")] 
 	[SerializeField] private Transform _groundCheckPoint;
 	//Size of groundCheck depends on the size of your character generally you want them slightly small than width (for ground) and height (for the wall check)
 	[SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
-	[Space(5)]
 	[SerializeField] private Transform _frontWallCheckPoint;
 	[SerializeField] private Transform _backWallCheckPoint;
 	[SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
 
     [Header("Layers & Tags")]
 	[SerializeField] private LayerMask _groundLayer;
-	#endregion
+    [SerializeField] private LayerMask _iceLayer;
+    #endregion
 
     private void Awake()
 	{
@@ -76,7 +82,25 @@ public class PlayerMovement : MonoBehaviour
 	{
 		GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
 	}
-	private void OnGameStateChanged(GameState newGameState)
+    #region Pose Voids
+    public void StrikeAPose()
+    {
+        PoseBackground.SetActive(true);
+        gameObject.GetComponent<Animator>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        Pose.Play();
+        int randomIndex = Random.Range(0, poses.Length);
+        Sprite.sprite = poses[randomIndex];
+        Invoke("ReturnToNormal", 0.6f);
+    }
+    public void ReturnToNormal()
+    {
+        PoseBackground.SetActive(false);
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        gameObject.GetComponent<Animator>().enabled = true;
+    }
+    #endregion
+    private void OnGameStateChanged(GameState newGameState)
 	{
 		enabled = newGameState == GameState.Gameplay;
 		if (newGameState == GameState.Gameplay)
@@ -95,12 +119,11 @@ public class PlayerMovement : MonoBehaviour
 		animator = GetComponent<Animator>();
 		DeathSound = GetComponent<AudioSource>();
 	}
-
     private void Update()
-	{
-		
-		//checks direction of movement
-		if(RB.velocity.x > 0.1)
+    {
+
+        //checks direction of movement
+        if (RB.velocity.x > 0.1)
         {
 			isMovingRight = true;
 
@@ -123,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 
 		#region INPUT HANDLER
+
 		_moveInput.x = Input.GetAxisRaw("Horizontal");
 		_moveInput.y = Input.GetAxisRaw("Vertical");
 
@@ -132,10 +156,16 @@ public class PlayerMovement : MonoBehaviour
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 
-		if (_moveInput.x != 0)
+		//Pose
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !PoseBackground.activeSelf)
+        {
+            this.gameObject.GetComponent<Animator>().enabled = false;
+            Invoke("StrikeAPose", 0.1f);
+        }
+
+        if (_moveInput.x != 0)
 		{
-			CheckDirectionToFace()
-				;
+			CheckDirectionToFace();
 			animator.SetFloat("Speed", 1);
 		}
         if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
@@ -150,35 +180,62 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
 		{
 			OnJumpUpInput();
-		}
-		#endregion
+            animator.SetBool("IsOnIce", false);
+        }
+        #endregion
 
-		#region COLLISION CHECKS
-		if (!IsJumping)
+        #region COLLISION CHECKS
+        if (!IsJumping)
 		{
 			//Ground Check
-			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
-			{
+			if ((Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping))//checks if set box overlaps with ground
+            {
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
 				animator.SetBool("IsJumping", false);
-			}
-			else
-			{
-				animator.SetBool("IsJumping", true);
-			}
+                animator.SetBool("IsOnIce", false);
+                Data.runAccMul = 1f;
 
-			//Right Wall Check
-			if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
+            }
+			else if ((Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _iceLayer) && !IsJumping)) //Ice Ground Check
+			{
+                LastOnGroundTime = Data.coyoteTime;
+                animator.SetBool("IsJumping", false);
+				animator.SetBool("IsOnIce", true);
+				Data.runAccMul = 0.05f;
+
+            }
+            else
+			{
+
+                Data.runAccMul = 1f;
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsOnIce", false);
+
+            }
+            //Right Wall Check
+            if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
 					|| (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)) && !IsWallJumping)
 				LastOnWallRightTime = Data.coyoteTime;
+            //Right Wall Check Ice
+            else if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _iceLayer) && IsFacingRight)
+                    || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _iceLayer) && !IsFacingRight)) && !IsWallJumping)
+            {
+                LastOnWallRightTime = Data.coyoteTime;
+            }
 
-			//Left Wall Check
-			if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
+            //Left Wall Check
+            if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
 				|| (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)) && !IsWallJumping)
 				LastOnWallLeftTime = Data.coyoteTime;
+            //Left Wall Check Ice
+            else if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _iceLayer) && !IsFacingRight)
+				|| (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _iceLayer) && IsFacingRight)) && !IsWallJumping)
+			{
+                LastOnWallLeftTime = Data.coyoteTime;
+			}
 
-			//Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
-			LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);
+            //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
+            LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);
 		}
 		#endregion
 
@@ -343,7 +400,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		//Calculate the direction we want to move in and our desired velocity
 		float targetSpeed = _moveInput.x * Data.runMaxSpeed;
-		//We can reduce are control using Lerp() this smooths changes to are direction and speed
+		//We can reduce our control using Lerp() this smooths changes to our direction and speed
 		targetSpeed = Mathf.Lerp(RB.velocity.x, targetSpeed, lerpAmount);
 
 		#region Calculate AccelRate
@@ -352,14 +409,13 @@ public class PlayerMovement : MonoBehaviour
 		//Gets an acceleration value based on if we are accelerating (includes turning) 
 		//or trying to decelerate (stop). As well as applying a multiplier if we're air borne.
 		if (LastOnGroundTime > 0)
-			accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
-		else
-			accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount * Data.accelInAir : Data.runDeccelAmount * Data.deccelInAir;
-		#endregion
-
-		#region Add Bonus Jump Apex Acceleration
-		//Increase are acceleration and maxSpeed when at the apex of their jump, makes the jump feel a bit more bouncy, responsive and natural
-		if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
+			accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount * Data.runAccMul : Data.runDeccelAmount * Data.runAccMul;
+        else
+			accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount * Data.accelInAir * Data.runAccMul : Data.runDeccelAmount * Data.deccelInAir * Data.runAccMul;
+        #endregion
+        #region Add Bonus Jump Apex Acceleration
+        //Increase are acceleration and maxSpeed when at the apex of their jump, makes the jump feel a bit more bouncy, responsive and natural
+        if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
 		{
 			accelRate *= Data.jumpHangAccelerationMult;
 			targetSpeed *= Data.jumpHangMaxSpeedMult;
@@ -368,16 +424,16 @@ public class PlayerMovement : MonoBehaviour
 
 		#region Conserve Momentum
 		//We won't slow the player down if they are moving in their desired direction but at a greater speed than their maxSpeed
-		if(Data.doConserveMomentum && Mathf.Abs(RB.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(RB.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && LastOnGroundTime < 0)
+		if (Data.doConserveMomentum && Mathf.Abs(RB.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(RB.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && LastOnGroundTime < 0)
 		{
 			//Prevent any deceleration from happening, or in other words conserve are current momentum
 			//You could experiment with allowing for the player to slightly increae their speed whilst in this "state"
 			accelRate = 0; 
 		}
-		#endregion
-
-		//Calculate difference between current velocity and desired velocity
-		float speedDif = targetSpeed - RB.velocity.x;
+        #endregion
+		
+        //Calculate difference between current velocity and desired velocity
+        float speedDif = targetSpeed - RB.velocity.x;
 		//Calculate force along x-axis to apply to thr player
 
 		float movement = speedDif * accelRate;

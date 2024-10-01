@@ -18,18 +18,20 @@ public class PlayerData : ScriptableObject
 	[Space(20)]
 
 	[Header("Run")]
-	public float runMaxSpeed; //Target speed we want the player to reach.
+    public float runAccMul;
+    public float runMaxSpeed; //Target speed we want the player to reach.
 	public float runAcceleration; //The speed at which our player accelerates to max speed, can be set to runMaxSpeed for instant acceleration down to 0 for none at all
-	[HideInInspector] public float runAccelAmount; //The actual force (multiplied with speedDiff) applied to the player.
-	public float runDecceleration; //The speed at which our player decelerates from their current speed, can be set to runMaxSpeed for instant deceleration down to 0 for none at all
-	[HideInInspector] public float runDeccelAmount; //Actual force (multiplied with speedDiff) applied to the player .
-	[Space(5)]
+    [HideInInspector] public float runAccelAmount; //The actual force (multiplied with speedDiff) applied to the player.
+    public float runDecceleration; //The speed at which our player decelerates from their current speed, can be set to runMaxSpeed for instant deceleration down to 0 for none at all
+    [HideInInspector] public float runDeccelAmount; //Actual force (multiplied with speedDiff) applied to the player .
+
+    [Space(5)]
 	[Range(0f, 1)] public float accelInAir; //Multipliers applied to acceleration rate when airborne.
 	[Range(0f, 1)] public float deccelInAir;
 	[Space(5)]
 	public bool doConserveMomentum = true;
 
-	[Space(20)]
+    [Space(20)]
 
 	[Header("Jump")]
 	public float jumpHeight; //Height of the player's jump
