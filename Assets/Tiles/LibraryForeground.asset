@@ -360,8 +360,8 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 8
     m_Sprites:
-    - {fileID: -1311809431, guid: b528cb8dc5ff0c3449fec0b8db145b06, type: 3}
-    - {fileID: -374348436, guid: b528cb8dc5ff0c3449fec0b8db145b06, type: 3}
+    - {fileID: 248795862, guid: b528cb8dc5ff0c3449fec0b8db145b06, type: 3}
+    - {fileID: -337057622, guid: b528cb8dc5ff0c3449fec0b8db145b06, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
